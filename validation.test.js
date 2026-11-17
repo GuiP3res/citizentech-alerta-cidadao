@@ -1,0 +1,10 @@
+const test = require('node:test');
+const assert = require('node:assert/strict');
+const { validateReport, summarize } = require('./validation');
+const valid = { location: 'Rua Exemplo, 10', category: 'Buraco na via', priority: 'Alta', description: 'Buraco grande na pista.' };
+test('aceita ocorrência válida e normaliza local', () => { const r = validateReport({ ...valid, location: '  Rua Exemplo, 10  ' }); assert.equal(r.value.location, valid.location); assert.ok(r.value.createdAt instanceof Date); });
+test('rejeita categoria não permitida', () => assert.ok(validateReport({ ...valid, category: 'Desconhecida' }).error));
+test('rejeita descrição curta', () => assert.ok(validateReport({ ...valid, description: 'curta' }).error));
+test('rejeita prioridade não permitida', () => assert.ok(validateReport({ ...valid, priority: 'Urgente' }).error));
+test('rejeita payload nulo', () => assert.ok(validateReport(null).error));
+test('calcula total e agrupamentos', () => { const r = summarize([{ category: 'Buraco na via', priority: 'Alta' }, { category: 'Outro', priority: 'Baixa' }]); assert.equal(r.total, 2); assert.equal(r.byCategory.Outro, 1); assert.equal(r.byPriority.Alta, 1); });
