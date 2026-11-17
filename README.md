@@ -46,6 +46,6 @@ HTML, CSS, JavaScript, Node.js 18+, Express 4 e MongoDB (driver oficial).
 
 ## Vídeo pitch (obrigatório no enunciado)
 
-**Link do vídeo (2–3 minutos):** [INSERIR LINK PÚBLICO DO VÍDEO ANTES DA ENTREGA]
+**Link do vídeo (2–3 minutos):** https://youtu.be/thF9SnADL2U
 
 O vídeo precisa ser gravado pelo aluno com a aplicação funcionando e publicado em um link acessível. O roteiro está no arquivo `ROTEIRO_PITCH.md`.
